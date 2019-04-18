@@ -1,3 +1,10 @@
+assemblyMergeStrategy in assembly := {
+//case PathList(ps @ _*) if ps.last endsWith "io.netty.versions.properties" => MergeStrategy.discard
+//case x =>    val oldStrategy = (assemblyMergeStrategy in assembly).value
+//    oldStrategy(x)
+case x => MergeStrategy.discard
+}
+
 // *****************************************************************************
 // Projects
 // *****************************************************************************
@@ -16,6 +23,13 @@ lazy val `hello-grpc-scala-demo` =
         library.scalaTest  % Test
       )
     )
+    .settings(
+    assemblyMergeStrategy in assembly := {
+case PathList(ps @ _*) if ps.last endsWith "io.netty.versions.properties" => MergeStrategy.first
+case x =>    val oldStrategy = (assemblyMergeStrategy in assembly).value
+   oldStrategy(x)
+}
+    )
 
 lazy val `hello-grpc-scala-protocol` =
   project
@@ -32,11 +46,21 @@ lazy val `hello-grpc-scala-protocol` =
         library.scalaTest  % Test
       )
     )
+    .settings(
+    assemblyMergeStrategy in assembly := {
+case PathList(ps @ _*) if ps.last endsWith "io.netty.versions.properties" => MergeStrategy.first
+case x =>    val oldStrategy = (assemblyMergeStrategy in assembly).value
+   oldStrategy(x)
+}
+    )
+
 
 lazy val `hello-grpc-scala` =
   project
     .in(file("."))
     .aggregate(`hello-grpc-scala-demo`, `hello-grpc-scala-protocol`)
+    .settings(
+    )
 
 // *****************************************************************************
 // Library dependencies
@@ -114,3 +138,4 @@ lazy val scalafmtSettings =
     scalafmtOnCompile.in(Sbt) := false,
     scalafmtVersion := "1.3.0"
   )
+
