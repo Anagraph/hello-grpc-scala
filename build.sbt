@@ -1,10 +1,3 @@
-assemblyMergeStrategy in assembly := {
-//case PathList(ps @ _*) if ps.last endsWith "io.netty.versions.properties" => MergeStrategy.discard
-//case x =>    val oldStrategy = (assemblyMergeStrategy in assembly).value
-//    oldStrategy(x)
-case x => MergeStrategy.discard
-}
-
 // *****************************************************************************
 // Projects
 // *****************************************************************************
