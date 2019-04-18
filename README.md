@@ -16,7 +16,7 @@ sdk install scala 2.12.4
 
 ````bash
 sbt assembly
-scala -classpath demo/target/scala-2.12/hello-grpc-scala-demo-assembly-blog-hello-grpc-11-g3c41800-SNAPSHOT.jar io.ontherocks.hellogrpc.HelloWorldServe &
+scala -classpath demo/target/scala-2.12/hello-grpc-scala-demo-assembly-blog-hello-grpc-11-g3c41800-SNAPSHOT.jar io.ontherocks.hellogrpc.HelloWorldServer &
 scala -classpath demo/target/scala-2.12/hello-grpc-scala-demo-assembly-blog-hello-grpc-11-g3c41800-SNAPSHOT.jar io.ontherocks.hellogrpc.HelloWorldClient
 ```
 
