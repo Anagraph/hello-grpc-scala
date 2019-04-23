@@ -33,7 +33,7 @@ object HelloWorldClient {
       .build
 
     val person = Person(
-      name = "Bob"
+      name = "Barb"
     )
 
     val toBeGreeted = ToBeGreeted(Some(person))
